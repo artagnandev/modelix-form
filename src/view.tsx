@@ -1,10 +1,7 @@
-import { FormEvent, useRef, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { logoImg, presentationImg1, presentationImg2, robotImg } from './assets';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { string } from 'yup';
-
-import 'swiper/css';
 
 import {
   gmail,
@@ -16,8 +13,6 @@ import {
 } from './assets/icons'
 import { validate, scroll } from './helpers';
 import api from './services/api';
-import { Navigation, Pagination, Scrollbar } from 'swiper';
-import { NavigationOptions, PaginationOptions } from 'swiper/types';
 
 const initialFields = {
   name: '',
@@ -38,10 +33,6 @@ function App() {
   const [form, setForm] = useState(initialFields);
   const [errors, setErrors] = useState(initialFields);
   const [loading, setLoading] = useState(false);
-
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
-  const scrollRef = useRef(null)
 
   const socials = [
     {
