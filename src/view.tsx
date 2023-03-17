@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { logoImg, presentationImg1, presentationImg2, robotImg } from './assets';
+import { logoImg, presentationImg1, presentationImg2, presentationImg3, presentationImg4, robotImg } from './assets';
 
 import { string } from 'yup';
 
@@ -66,11 +66,18 @@ function App() {
     },
   ]
 
+  const topics = [
+    'Somos uma empresa líder em soluções de robótica educacional.',
+    'Desenvolvemos e comercializamos kits de robótica para todas as idades.',
+    'Nosso materiais didáticos e treinamentos são explicativos e auto suficientes, dessa forma, o professor tem total capacidade de dar aulas de robótica, mesmo sem ter experiência nessa área.',
+    'Trabalhamos em estreita colaboração com nossos clientes para atender suas necessidades e fornecer soluções personalizadas.'
+  ]
+
   const slides = [
     presentationImg1,
+    presentationImg3,
     presentationImg2,
-    presentationImg1,
-    presentationImg2,
+    presentationImg4,
   ]
 
   const inputs = [
@@ -90,7 +97,7 @@ function App() {
       key: 'institution',
       label: 'Sua instituição',
     }
-  ];
+  ]
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -101,7 +108,6 @@ function App() {
       .request(form, schema)
       .then(async () => {
         setSent(true)
-        setForm(initialFields)
         setLoading(false)
 
         api.post('/endpoint', form)
@@ -142,20 +148,21 @@ function App() {
 
       <section className="about mt-[190px]">
         <div className="container flex justify-between">
-          <div className="flex flex-col mr-4 w-full max-w-[510px]">
-            <h2 className="text-2xl font-jakarta font-bold text-[#1F2937] mb-7">
-              Leve a robótica para a sala de aula
+          <div className="flex flex-col mr-4 w-full max-w-[540px]">
+            <h2 className="text-2xl font-jakarta font-bold text-gray-800 mb-7">
+              Leve a robótica para a sala de aula 
             </h2>
 
-            <p className="text-base font-inter font-regular text-[#9CA3AF] mb-4 text-justify">
-              A <b>Modelix Robotics</b> é uma empresa genuinamente nacional, que <b>fabrica, 
-              desenvolve e comercializa kits para ensino de Robótica Educacional</b> há mais 15 anos.
-            </p>
+            {
+              topics.map((topic) => (
+                <p key={topic} className="text-base font-inter font-regular text-gray-400 mb-2">
+                  • {topic}
+                </p>
+              ))
+            }
 
-            <p className="text-md font-inter font-regular text-[#9CA3AF] text-justify">
-              O principal objetivo da Modelix Robotics é fornecer o que há de mais avançado na Robótica Educacional 
-              de forma com que o professor não tenha dificuldades em lecionar a matéria fazendo com que o 
-              aluno consiga extrair todos os benefícios desta atividade.
+            <p className="text-md font-inter font-semibold text-gray-500 mt-8">
+              Estimule a criatividade dos seus alunos com a robótica educacional de maneira simples e eficiente!
             </p>
           </div>
 
@@ -173,7 +180,7 @@ function App() {
             slides.map((img) => (
               <div
                 key={Math.random()}
-                className="w-[300px] min-w-[300px] h-[200px] rounded-lg overflow-hidden mr-4"
+                className="flex-none w-auto h-[200px] rounded-lg overflow-hidden mr-4"
               >
                 <img
                   alt=""
@@ -189,11 +196,11 @@ function App() {
       <section className="contact mt-[100px]">
         <div className="container">
           <h2 className="text-2xl font-jakarta font-bold text-[#1F2937] mb-7">
-            Entre em contato
+            Fique por dentro das novidades 😉
           </h2>
 
           <p className="text-base font-inter font-regular text-[#4B5563] mb-8">
-            Retornaremos assim que possível.
+            Te mostraremos nossas melhores soluções.
           </p>
 
           <form onSubmit={submit} className="w-full py-8 px-8 rounded-lg bg-gray-50 relative">
@@ -231,7 +238,8 @@ function App() {
 
             <div className={`${sent ? 'visible' : 'invisible'} absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 w-[80%] p-4 rounded-md border border-green-600 bg-green-100 transition-all`}>
               <p className="text-green-600 text-center font-jakarta">
-                Formulário enviado com sucesso!
+                Obrigado {form.name}! <br/>
+                Seu formulário enviado com sucesso!
               </p>
             </div>
           </form>

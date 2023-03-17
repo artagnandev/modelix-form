@@ -13,3 +13,11 @@ export {
 export {
   default as presentationImg2
 } from './presentation-img-2.jpg'
+
+export {
+  default as presentationImg3
+} from './presentation-img-3.jpg'
+
+export {
+  default as presentationImg4
+} from './presentation-img-4.jpg'
