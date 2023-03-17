@@ -25,7 +25,6 @@ const schema = {
   name: string().required('Este campo é obrigatório'),
   email: string().email('Preencha um e-mail válido').required('Este campo é obrigatório'),
   office: string().required('Este campo é obrigatório'),
-  institution: string().required('Este campo é obrigatório')
 }
 
 function App() {
@@ -145,7 +144,7 @@ function App() {
         <div className="container flex justify-between">
           <div className="flex flex-col mr-4 w-full max-w-[510px]">
             <h2 className="text-2xl font-jakarta font-bold text-[#1F2937] mb-7">
-              Sobre a Modelix
+              Leve a robótica para a sala de aula
             </h2>
 
             <p className="text-base font-inter font-regular text-[#9CA3AF] mb-4 text-justify">
