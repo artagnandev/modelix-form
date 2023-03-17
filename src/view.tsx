@@ -10,6 +10,7 @@ import {
   instagram,
   tiktok,
   youtube,
+  chevronDown,
 } from './assets/icons'
 import { validate, scroll } from './helpers';
 import api from './services/api';
@@ -232,14 +233,14 @@ function App() {
                         {label}
                       </span>
 
-                      <label className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} block border border-solid px-4 rounded-md w-full outline-blue-500 bg-white`}>
+                      <label className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} relative block border border-solid px-4 rounded-md w-full outline-blue-500 bg-white`}>
                         <select
                           id={key}
                           name={key}
                           value={form[key as keyof typeof initialFields]}
                           onFocus={(e) => setErrors({ ...errors, [key]: '' })}
                           onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                          className="w-full h-full py-3 outline-none bg-white text-slate-700 text-sm"
+                          className="w-full h-[44px] outline-none bg-white text-slate-700 text-sm appearance-none"
                         >
                           <option value="" disabled selected>Selecione</option>
                           <option value="Aluno">Aluno(a)</option>
@@ -247,6 +248,8 @@ function App() {
                           <option value="Professor">Professor(a)</option>
                           <option value="Outro">Outro</option>
                         </select>
+
+                        <img src={chevronDown} alt="" className="w-3 h-3 absolute right-4 top-4" />
                       </label>
 
                       <p className={`${!!errors[key as keyof typeof initialFields] ? 'h-[20px]' : 'h-0'} mt-1 text-pink-600 text-xs pointer-events-none overflow-hidden transition-all`}>

@@ -21,3 +21,7 @@ export {
 export {
   default as youtube
 } from './youtube.svg';
+
+export {
+  default as chevronDown
+} from './chevron-down.svg';
