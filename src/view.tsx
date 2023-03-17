@@ -232,14 +232,14 @@ function App() {
                         {label}
                       </span>
 
-                      <label className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} block text-slate-700 border border-solid px-4 rounded-md w-full outline-blue-500 text-sm bg-white`}>
+                      <label className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} block border border-solid px-4 rounded-md w-full outline-blue-500 bg-white`}>
                         <select
                           id={key}
                           name={key}
                           value={form[key as keyof typeof initialFields]}
                           onFocus={(e) => setErrors({ ...errors, [key]: '' })}
                           onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                          className="w-full h-full py-3 outline-none"
+                          className="w-full h-full py-3 outline-none bg-white text-slate-700 text-sm"
                         >
                           <option value="" disabled selected>Selecione</option>
                           <option value="Aluno">Aluno(a)</option>
