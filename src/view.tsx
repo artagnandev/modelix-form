@@ -185,7 +185,7 @@ function App() {
                 <img
                   alt=""
                   src={img}
-                  className="w-full h-full object-cover"
+                  className="h-full w-auto"
                 />
               </div>
             ))
@@ -207,24 +207,53 @@ function App() {
             <div className={sent ? 'invisible' : 'visible'}>
               {
                 inputs.map(({ key, label }) => (
-                  <div className="block mb-3">
-                    <span className="block text-sm font-regular text-slate-700 mb-1">
-                      {label}
-                    </span>
+                  key !== 'office' ? (
+                    <div className="block mb-3">
+                      <span className="block text-sm font-regular text-slate-700 mb-1">
+                        {label}
+                      </span>
 
-                    <input
-                      type="text"
-                      name={key}
-                      value={form[key as keyof typeof initialFields]}
-                      onFocus={(e) => setErrors({ ...errors, [key]: '' })}
-                      onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                      className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} text-slate-700 border border-solid py-3 px-4 rounded-md w-full outline-blue-500 text-sm`}
-                    />
+                      <input
+                        type="text"
+                        name={key}
+                        value={form[key as keyof typeof initialFields]}
+                        onFocus={(e) => setErrors({ ...errors, [key]: '' })}
+                        onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                        className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} text-slate-700 border border-solid py-3 px-4 rounded-md w-full outline-blue-500 text-sm`}
+                      />
 
-                    <p className={`${!!errors[key as keyof typeof initialFields] ? 'h-[20px]' : 'h-0'} mt-1 text-pink-600 text-xs pointer-events-none overflow-hidden transition-all`}>
-                      {errors[key as keyof typeof initialFields]}
-                    </p>
-                  </div>
+                      <p className={`${!!errors[key as keyof typeof initialFields] ? 'h-[20px]' : 'h-0'} mt-1 text-pink-600 text-xs pointer-events-none overflow-hidden transition-all`}>
+                        {errors[key as keyof typeof initialFields]}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="block mb-3">
+                      <span className="block text-sm font-regular text-slate-700 mb-1">
+                        {label}
+                      </span>
+
+                      <label className={`${!!errors[key as keyof typeof initialFields] ? 'border-pink-600' : 'border-gray-200'} block text-slate-700 border border-solid px-4 rounded-md w-full outline-blue-500 text-sm bg-white`}>
+                        <select
+                          id={key}
+                          name={key}
+                          value={form[key as keyof typeof initialFields]}
+                          onFocus={(e) => setErrors({ ...errors, [key]: '' })}
+                          onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                          className="w-full h-full py-3 outline-none"
+                        >
+                          <option value="" disabled selected>Selecione</option>
+                          <option value="Aluno">Aluno(a)</option>
+                          <option value="Diretor">Diretor(a)</option>
+                          <option value="Professor">Professor(a)</option>
+                          <option value="Outro">Outro</option>
+                        </select>
+                      </label>
+
+                      <p className={`${!!errors[key as keyof typeof initialFields] ? 'h-[20px]' : 'h-0'} mt-1 text-pink-600 text-xs pointer-events-none overflow-hidden transition-all`}>
+                        {errors[key as keyof typeof initialFields]}
+                      </p>
+                    </div>
+                  )
                 ))
               }
 
