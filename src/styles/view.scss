@@ -1,0 +1,71 @@
+@layer components {
+  .view {
+    .header.is-floating {
+      @apply py-4 shadow-md;
+
+      .logo {
+        @apply h-7;
+      }
+
+      .socials {
+        a {
+          @apply h-7 w-7;
+        }
+      }
+    }
+
+    .container {
+      @apply max-w-[860px];
+    }
+  }
+
+  @screen sm {
+    .view {
+      .header {
+        @apply py-4;
+
+        .logo {
+          @apply h-7;
+        }
+  
+        .socials {
+          a {
+            @apply h-7 w-7;
+          }
+        }
+      }
+
+      .about {
+        @apply mt-[130px];
+
+        .container {
+          @apply flex-col;
+  
+          img {
+            @apply mx-auto;
+          }
+        }
+      }
+
+      .footer {
+        .container {
+          @apply flex-col text-center;
+
+          .button {
+            @apply mt-3
+          }
+        }
+      }
+    }
+  }
+
+  @screen xs {
+    .view {
+      .header {
+        .socials {
+          @apply gap-2;
+        }
+      }
+    }
+  }
+}

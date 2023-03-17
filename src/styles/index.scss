@@ -1,0 +1,9 @@
+@tailwind base;
+
+@import "./default.scss";
+
+@tailwind components;
+
+@import "./view.scss";
+
+@tailwind utilities;
