@@ -9,3 +9,23 @@ button,
 textarea {
   @apply font-jakarta;
 }
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(229 231 235) rgb(156 163 175);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-gray-200;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-lg;
+}

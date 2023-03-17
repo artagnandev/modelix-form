@@ -174,8 +174,8 @@ function App() {
         </div>
       </section>
 
-      <section className="images mt-[100px] overflow-hidden">
-        <div className="container flex overflow-x-scroll pb-2">
+      <section className="images mt-[90px] overflow-hidden pt-4 bg-gray-100">
+        <div className="container flex overflow-x-scroll pb-4">
           {
             slides.map((img) => (
               <div
@@ -196,7 +196,7 @@ function App() {
       <section className="contact mt-[100px]">
         <div className="container">
           <h2 className="text-2xl font-jakarta font-bold text-[#1F2937] mb-7">
-            Fique por dentro das novidades 😉
+            Fique por dentro das novidades
           </h2>
 
           <p className="text-base font-inter font-regular text-[#4B5563] mb-8">
