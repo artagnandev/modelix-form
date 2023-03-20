@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: 'https://SEU_ENPOINT'
-})
+const api = axios.create()
 
 export default api;

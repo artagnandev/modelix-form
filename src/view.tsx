@@ -16,16 +16,16 @@ import { validate, scroll } from './helpers';
 import api from './services/api';
 
 const initialFields = {
-  name: '',
+  nome: '',
   email: '',
-  office: '',
-  institution: '',
+  ocupacao: '',
+  instituicao: '',
 }
 
 const schema = {
-  name: string().required('Este campo é obrigatório'),
+  nome: string().required('Este campo é obrigatório'),
   email: string().email('Preencha um e-mail válido').required('Este campo é obrigatório'),
-  office: string().required('Este campo é obrigatório'),
+  ocupacao: string().required('Este campo é obrigatório'),
 }
 
 function App() {
@@ -83,7 +83,7 @@ function App() {
 
   const inputs = [
     {
-      key: 'name',
+      key: 'nome',
       label: 'Seu nome',
     },
     {
@@ -91,11 +91,11 @@ function App() {
       label: 'Seu e-mail',
     },
     {
-      key: 'office',
+      key: 'ocupacao',
       label: 'Sua ocupação',
     },
     {
-      key: 'institution',
+      key: 'instituicao',
       label: 'Sua instituição',
     }
   ]
@@ -111,13 +111,12 @@ function App() {
         setSent(true)
         setLoading(false)
 
-        api.post('/endpoint', form)
+        api.post('https://sheetdb.io/api/v1/gcembby0f9qnf', form)
           .then(() => {
-            // setSent(true)
-            // setForm(initialFields)
-            // setLoading(false)
+            setSent(true)
+            setLoading(false)
           })
-          .catch(() => console.log('Deu errado'))
+          .catch(() => console.error('Fail'))
       })
       .catch((err: Error) => {
         const messages = validate.error(err);
@@ -208,7 +207,7 @@ function App() {
             <div className={sent ? 'invisible' : 'visible'}>
               {
                 inputs.map(({ key, label }) => (
-                  key !== 'office' ? (
+                  key !== 'ocupacao' ? (
                     <div className="block mb-3">
                       <span className="block text-sm font-regular text-slate-700 mb-1">
                         {label}
@@ -243,9 +242,9 @@ function App() {
                           className="w-full h-[44px] outline-none bg-white text-slate-700 text-sm appearance-none"
                         >
                           <option value="" disabled selected>Selecione</option>
-                          <option value="Aluno">Aluno(a)</option>
-                          <option value="Diretor">Diretor(a)</option>
-                          <option value="Professor">Professor(a)</option>
+                          <option value="Aluno(a)">Aluno(a)</option>
+                          <option value="Diretor(a)">Diretor(a)</option>
+                          <option value="Professor(a)">Professor(a)</option>
                           <option value="Outro">Outro</option>
                         </select>
 
@@ -270,8 +269,8 @@ function App() {
 
             <div className={`${sent ? 'visible' : 'invisible'} absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 w-[80%] p-4 rounded-md border border-green-600 bg-green-100 transition-all`}>
               <p className="text-green-600 text-center font-jakarta">
-                Obrigado {form.name}! <br/>
-                Seu formulário enviado com sucesso!
+                Obrigado {form.nome}! <br/>
+                O formulário foi enviado com sucesso!
               </p>
             </div>
           </form>
